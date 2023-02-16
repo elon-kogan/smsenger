@@ -1,15 +1,11 @@
-import './App.css';
+import { StyledEngineProvider } from '@mui/material'
 
-import logo from './logo.svg';
+import './App.sass'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <StyledEngineProvider injectFirst></StyledEngineProvider>
+  </div>
+)
 
-export default App;
+export default App
