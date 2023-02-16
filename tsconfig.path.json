@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@customTypes/*": ["./src/customTypes/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@store": ["./src/store"],
+      "@store/*": ["./src/store/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@/*": ["./src/*"]
+    }
+  }
+}
