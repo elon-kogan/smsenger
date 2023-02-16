@@ -31,6 +31,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort', 'import'],
   rules: {
+    'max-len': ['error', { code: 100, tabWidth: 2 }],
     'react/prop-types': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
