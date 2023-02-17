@@ -4,7 +4,7 @@ import MessageBox from '@components/messages/Box'
 import MessagesList from '@components/messages/List'
 import NewMessage from '@components/messages/New'
 import { createMessage } from '@store/actions/messages'
-import { getMessages } from '@store/reducers/messages'
+import { getMessages, isLoading } from '@store/reducers/messages'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
 
 import type { FC } from 'react'
@@ -21,6 +21,7 @@ const MessagesContainer: FC = () => {
   const { phone, text } = newMessage
   const dispatch = useAppDispatch()
   const messages = useAppSelector(getMessages)
+  const isMessageLoading = useAppSelector(isLoading)
   const submitHandler = () => dispatch(createMessage(phone, text))
 
   return (
@@ -29,6 +30,7 @@ const MessagesContainer: FC = () => {
         <NewMessage
           phone={phone}
           text={text}
+          isLoading={isMessageLoading}
           onTextChange={(newText: string) => setNewMessage({ ...newMessage, text: newText })}
           onPhoneChange={(newPhone: string) => setNewMessage({ ...newMessage, phone: newPhone })}
           onSubmit={submitHandler}

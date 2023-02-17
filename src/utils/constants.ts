@@ -1,3 +1,5 @@
 const MAX_MESSAGE_SIZE = 250
 
-export { MAX_MESSAGE_SIZE }
+const DATE_FORMAT = 'dddd, DD-MMM-YY HH:mm:ss Z'
+
+export { DATE_FORMAT, MAX_MESSAGE_SIZE }

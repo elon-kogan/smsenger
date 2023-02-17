@@ -19,7 +19,7 @@ const createMessage = (phone: string, text: string) => (dispatch: AppDispatch) =
   setTimeout(() => {
     console.log(phone, text)
     dispatch(messageCreated({ ...message, sendedAt: new Date() }))
-  }, 5000)
+  }, 1000)
 }
 
 export { createMessage }

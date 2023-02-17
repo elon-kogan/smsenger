@@ -1,5 +1,7 @@
 import { memo } from 'react'
 
+import MessagesListItem from './Listitem'
+
 import type { FC } from 'react'
 import type { Message } from '@customTypes/messages'
 
@@ -12,7 +14,7 @@ interface Props {
 const MessagesList: FC<Props> = ({ messages }) => (
   <div className="list-messages">
     {messages.map((message, index) => (
-      <div key={index}>{message.text}</div>
+      <MessagesListItem message={message} key={index} />
     ))}
   </div>
 )

@@ -42,6 +42,7 @@ const loading = (state: State['loading'] = false, action: LoadingActions) => {
 export default combineReducers({ entities, loading })
 
 const isLoading = ({ messages: state }: RootState) => state.loading
-const getMessages = ({ messages: state }: RootState) => state.entities
+const getMessages = ({ messages: state }: RootState) =>
+  state.entities.sort((a, b) => b.sendedAt.getTime() - a.sendedAt.getTime())
 
 export { getMessages, isLoading }
