@@ -1,9 +1,8 @@
 const MESSAGES = {
   CREATE: {
-    BASE: 'messages/create',
-    PENDING: 'messages/create/pending',
-    FULFILLED: 'messages/create/fulfilled',
-    REJECTED: 'messages/create/rejected',
+    PENDING: 'messages/create/pending' as 'messages/create/pending',
+    FULFILLED: 'messages/create/fulfilled' as 'messages/create/fulfilled',
+    REJECTED: 'messages/create/rejected' as 'messages/create/rejected',
   },
 }
 

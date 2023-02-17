@@ -15,6 +15,7 @@ interface Props {
   onTextChange: (value: string) => void
   onPhoneChange: (value: string) => void
   onSubmit: () => void
+  onClear: () => void
 }
 
 const NewMessage: FC<Props> = ({
@@ -25,6 +26,7 @@ const NewMessage: FC<Props> = ({
   onTextChange,
   onPhoneChange,
   onSubmit,
+  onClear,
 }) => (
   <div className="new-message">
     <div className="new-message__label">Phone Number</div>
@@ -59,8 +61,7 @@ const NewMessage: FC<Props> = ({
         className="new-message__actions__button new-message__actions__clear"
         onClick={() => {
           if (isLoading) return
-          onPhoneChange('')
-          onTextChange('')
+          onClear()
         }}
       >
         Clear

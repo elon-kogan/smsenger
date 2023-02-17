@@ -11,4 +11,8 @@ const PHONE_ERRORS = {
   'too-short': 'Phone number is too short',
 } as Record<PhoneNumberPossibility | 'base', string | undefined>
 
-export { DATE_FORMAT, MAX_MESSAGE_SIZE, PHONE_ERRORS }
+const UNEXPECTED_ERROR = 'Unexpected error'
+
+const TWILIO_BASE_URL = 'https://api.twilio.com/2010-04-01/Accounts'
+
+export { DATE_FORMAT, MAX_MESSAGE_SIZE, PHONE_ERRORS, TWILIO_BASE_URL, UNEXPECTED_ERROR }

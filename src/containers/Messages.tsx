@@ -7,33 +7,29 @@ import { createMessage } from '@store/actions/messages'
 import { getMessages, isLoading } from '@store/reducers/messages'
 import { MAX_MESSAGE_SIZE } from '@utils/constants'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
-import { validatePhone } from '@utils/phone'
+import { parsePhone } from '@utils/phone'
 
 import type { FC } from 'react'
 
 import './Messages.sass'
 
-interface NewMessageState {
-  phone: string
-  text: string
-  phoneError?: string
-}
-
 const MessagesContainer: FC = () => {
-  const [newMessage, setNewMessage] = useState<NewMessageState>({ phone: '', text: '' })
-  const { phone, text, phoneError } = newMessage
+  const [newMessage, setNewMessage] = useState({ phone: parsePhone(''), text: '' })
+  const { phone, text } = newMessage
   const dispatch = useAppDispatch()
   const messages = useAppSelector(getMessages)
   const isMessageLoading = useAppSelector(isLoading)
 
-  const submitHandler = () => dispatch(createMessage(phone, text))
+  const clearHandler = () => {
+    setNewMessage({ phone: parsePhone(''), text: '' })
+  }
+  const submitHandler = () => {
+    phone.valid && dispatch(createMessage(phone.e164, text))
+  }
   const phoneChangeHandler = (rawPhone: string) => {
-    const phone = validatePhone(rawPhone)
-    console.log(phone)
     setNewMessage({
       ...newMessage,
-      phone: (phone.valid && phone.international) || phone.raw,
-      phoneError: phone.error,
+      phone: parsePhone(rawPhone),
     })
   }
   const textChangeHandler = (newText: string) =>
@@ -43,13 +39,14 @@ const MessagesContainer: FC = () => {
     <div className="messages-wrapper">
       <MessageBox title="New Message">
         <NewMessage
-          phone={phone}
-          phoneError={phoneError}
+          phone={(phone.valid && phone.international) || phone.raw}
+          phoneError={phone.error}
           text={text}
           isLoading={isMessageLoading}
           onTextChange={textChangeHandler}
           onPhoneChange={phoneChangeHandler}
           onSubmit={submitHandler}
+          onClear={clearHandler}
         />
       </MessageBox>
       <MessageBox title={'Message History' + (messages.length > 0 ? ` (${messages.length})` : '')}>
