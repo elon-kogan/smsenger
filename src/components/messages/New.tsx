@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material'
 
 import { MAX_MESSAGE_SIZE } from '@utils/constants'
+import { getPhoneExample } from '@utils/phone'
 
 import type { FC } from 'react'
 
@@ -8,6 +9,7 @@ import './New.sass'
 
 interface Props {
   phone: string
+  phoneError?: string
   text: string
   isLoading: boolean
   onTextChange: (value: string) => void
@@ -17,6 +19,7 @@ interface Props {
 
 const NewMessage: FC<Props> = ({
   phone,
+  phoneError,
   text,
   isLoading,
   onTextChange,
@@ -26,20 +29,24 @@ const NewMessage: FC<Props> = ({
   <div className="new-message">
     <div className="new-message__label">Phone Number</div>
     <TextField
+      classes={{ root: 'new-message__phone-input' }}
       value={phone}
       onChange={(event) => onPhoneChange(event.target.value)}
       variant="outlined"
       disabled={isLoading}
+      error={Boolean(phoneError)}
+      helperText={phoneError}
+      placeholder={getPhoneExample()}
       fullWidth
     />
     <div className="new-message__label">Message</div>
 
     <TextField
-      classes={{ root: '' }}
       value={text}
       onChange={(event) => onTextChange(event.target.value)}
       variant="outlined"
       minRows={4}
+      maxRows={4}
       disabled={isLoading}
       multiline
       fullWidth
@@ -59,9 +66,11 @@ const NewMessage: FC<Props> = ({
         Clear
       </div>
       <div
-        className="new-message__actions__button new-message__actions__submit"
+        className={`new-message__actions__button new-message__actions__submit${
+          phoneError ? ' disabled' : ''
+        }${isLoading ? ' loading disabled' : ''}`}
         onClick={() => {
-          if (isLoading) return
+          if (isLoading || phoneError) return
           onSubmit()
         }}
       >

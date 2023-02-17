@@ -1,8 +1,12 @@
 .new-message
+  padding-top: 10px
 
   &__label
-    margin: 20px 0 5px
+    margin-bottom: 5px
     font-size: 14px
+
+  &__phone-input
+    min-height: 79px
 
   &__actions
     margin-top: 22px
@@ -28,5 +32,12 @@
       border-radius: 20px
       width: 54px
 
-      &:hover
+      &:hover:not(.disabled)
         box-shadow: rgb(0 0 0 / 7%) 0px 0px 5px 3px, rgb(0 0 0 / 12%) 0px 8px 10px 0px
+
+      &.disabled
+        cursor: not-allowed
+        background-color: gray
+
+      &.loading
+        cursor: wait
