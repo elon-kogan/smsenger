@@ -1,0 +1,43 @@
+.new-message
+  padding-top: 10px
+
+  &__label
+    margin-bottom: 5px
+    font-size: 14px
+
+  &__phone-input
+    min-height: 79px
+
+  &__actions
+    margin-top: 22px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+
+    &__button
+      cursor: pointer
+      font-size: 13px
+
+    &__clear
+      text-decoration: underline
+
+      &:hover
+        text-shadow: 0 1px 2px rgb(0 0 0 / 30%)
+
+    &__submit
+      padding: 12px 19px 12px 31px
+      background-color: black
+      color: white
+      border-radius: 20px
+      width: 54px
+
+      &:hover:not(.disabled)
+        box-shadow: rgb(0 0 0 / 7%) 0px 0px 5px 3px, rgb(0 0 0 / 12%) 0px 8px 10px 0px
+
+      &.disabled
+        cursor: not-allowed
+        background-color: gray
+
+      &.loading
+        cursor: wait
