@@ -1,10 +1,10 @@
-import type { FC, ReactElement } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import './Box.sass'
 
 interface Props {
   title: string
-  children: ReactElement
+  children: ReactNode
 }
 
 const MessageBox: FC<Props> = ({ title, children }) => (

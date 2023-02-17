@@ -4,7 +4,7 @@ import MessageBox from '@components/messages/Box'
 import MessagesList from '@components/messages/List'
 import NewMessage from '@components/messages/New'
 import { createMessage } from '@store/actions/messages'
-import { getMessages, isLoading } from '@store/reducers/messages'
+import { getError, getMessages, isLoading } from '@store/reducers/messages'
 import { MAX_MESSAGE_SIZE } from '@utils/constants'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
 import { parsePhone } from '@utils/phone'
@@ -19,6 +19,7 @@ const MessagesContainer: FC = () => {
   const dispatch = useAppDispatch()
   const messages = useAppSelector(getMessages)
   const isMessageLoading = useAppSelector(isLoading)
+  const errorMessage = useAppSelector(getError)
 
   const clearHandler = () => {
     setNewMessage({ phone: parsePhone(''), text: '' })
@@ -48,6 +49,7 @@ const MessagesContainer: FC = () => {
           onSubmit={submitHandler}
           onClear={clearHandler}
         />
+        <div className="messages-wrapper__error-message">{errorMessage}</div>
       </MessageBox>
       <MessageBox title={'Message History' + (messages.length > 0 ? ` (${messages.length})` : '')}>
         <MessagesList messages={messages} />
