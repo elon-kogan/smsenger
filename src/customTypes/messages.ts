@@ -4,13 +4,11 @@ interface Message {
   createdAt: Date
 }
 
-interface TwilioMessage {
-  body?: string
-  error_code?: string
-  error_message?: string
-  from?: string
-  to?: string
-  date_created?: string
+interface MessageApi {
+  phone: string
+  text: string
+  created_at: string
+  updated_at: string
 }
 
-export type { Message, TwilioMessage }
+export type { Message, MessageApi }

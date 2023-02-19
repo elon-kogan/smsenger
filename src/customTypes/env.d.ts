@@ -1,7 +1,5 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
-    REACT_APP_TWILIO_SID?: string
-    REACT_APP_TWILIO_TOKEN?: string
-    REACT_APP_TWILIO_NUMBER?: string
+    REACT_APP_API_BASE_URL?: string
   }
 }
