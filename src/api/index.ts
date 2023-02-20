@@ -1,3 +1,3 @@
-import { sendSms } from './sms'
+import { getMessages, sentMessage } from './messages'
 
-export default { sendSms }
+export default { getMessages, sentMessage }

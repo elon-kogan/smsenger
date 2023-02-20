@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 import './Box.sass'
 
 interface Props {
-  title: string
+  title: string | ReactNode
   children: ReactNode
 }
 

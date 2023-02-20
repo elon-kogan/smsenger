@@ -1,9 +1,12 @@
+const getDefaultApiTypes = <T extends string>(baseType: T) => ({
+  PENDING: `${baseType}/pending` as `${T}/pending`,
+  FULFILLED: `${baseType}/fulfilled` as `${T}/fulfilled`,
+  REJECTED: `${baseType}/rejected` as `${T}/rejected`,
+})
+
 const MESSAGES = {
-  CREATE: {
-    PENDING: 'messages/create/pending' as 'messages/create/pending',
-    FULFILLED: 'messages/create/fulfilled' as 'messages/create/fulfilled',
-    REJECTED: 'messages/create/rejected' as 'messages/create/rejected',
-  },
+  CREATE: getDefaultApiTypes(`messages/create`),
+  GET_LIST: getDefaultApiTypes(`messages/getList`),
 }
 
 export { MESSAGES }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ClipLoader } from 'react-spinners'
 
 import MessageBox from '@components/messages/Box'
 import MessagesList from '@components/messages/List'
@@ -51,7 +52,14 @@ const MessagesContainer: FC = () => {
         />
         <div className="messages-wrapper__error-message">{errorMessage}</div>
       </MessageBox>
-      <MessageBox title={'Message History' + (messages.length > 0 ? ` (${messages.length})` : '')}>
+      <MessageBox
+        title={
+          <>
+            Message History {messages.length > 0 ? ` (${messages.length})` : ''}
+            {isMessageLoading ? <ClipLoader className="loading-spinner" loading size={15} /> : null}
+          </>
+        }
+      >
         <MessagesList messages={messages} />
       </MessageBox>
     </div>
